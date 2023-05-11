@@ -57,6 +57,7 @@ func (c OrchardRestClient) Create(wf table.Workflow) (string, error) {
 	}
 	url := fmt.Sprintf("%s/v1/workflow", c.Host)
 	body := bytes.NewBuffer([]byte(result))
+	fmt.Printf("httpMethod: %s, url: %s, result: %s", http.MethodPost, url, result)
 	rsp, err := c.request(http.MethodPost, url, body)
 	if err != nil {
 		return "", err
