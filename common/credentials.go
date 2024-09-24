@@ -28,12 +28,19 @@ type AwsCredentials struct {
 }
 
 func WithAwsCredentials() AwsCredentials {
+
+	clientRegion := viper.GetString("aws.region")
+	assumeRoleArn := viper.GetString("aws.assumeRoleArn")
+
+	fmt.Println("client region: ", clientRegion)
+	fmt.Println("assume role arn: ", assumeRoleArn)
+
 	return AwsCredentials{
-		ClientRegion:   viper.GetString("aws.region"),
+		ClientRegion:   clientRegion,
 		AwsAccessKeyId: viper.GetString("aws.staticCredentials.awsAccessKeyId"),
 		AwsSecretKey:   viper.GetString("aws.staticCredentials.awsSecretKey"),
 		SessionToken:   viper.GetString("aws.staticCredentials.sessionToken"),
-		AssumeRoleArn:  viper.GetString("aws.assumeRoleArn"),
+		AssumeRoleArn:  assumeRoleArn,
 	}
 }
 
