@@ -32,8 +32,8 @@ func WithAwsCredentials() AwsCredentials {
 	clientRegion := viper.GetString("aws.region")
 	assumeRoleArn := viper.GetString("aws.assumeRoleArn")
 
-	fmt.Println("client region: ", clientRegion)
-	fmt.Println("assume role arn: ", assumeRoleArn)
+	fmt.Println("AWS client region: ", clientRegion)
+	fmt.Println("AWS assume role arn: ", assumeRoleArn)
 
 	return AwsCredentials{
 		ClientRegion:   clientRegion,
